@@ -21,11 +21,12 @@ typedef struct _UINT24{
    
 #define VERSION "v1.08"
 #define MODELO  "C226T"   
-#define BUILDNUMBER 108
+#define BUILDNUMBER 109
 
 void empaquetarVersion(char* buffer);
 
 #endif	/* XC_VERSION_H */
+
 
 
 

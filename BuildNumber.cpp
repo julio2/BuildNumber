@@ -12,6 +12,8 @@ using namespace std;
 //#define MAXPATH 1024
 //#define MAXLINE 1024
 
+char* itoaj(int num, char* str, int base);
+
 int main(int argc, char* argv[])
 {
     char filename[1024];
@@ -54,10 +56,10 @@ int main(int argc, char* argv[])
             printf("%s",buffer);
         	pstr= strstr(buffer,"#define BUILDNUMBER");
             if(pstr){
-            	posc= (char*)((int)pstr + strlen("#define BUILDNUMBER") + 1);
+            	posc= (char*)(pstr + strlen("#define BUILDNUMBER") + 1);
             	number=atoi(posc);
             	number++;
-            	itoa(number,posc,10);
+            	itoaj(number,posc,10);
         	}
             fo.write(buffer,strlen(buffer));
             fo.put('\n');
@@ -76,7 +78,7 @@ int main(int argc, char* argv[])
         printf("\n%s\n",buffer);
         system(buffer);                   // borrar el original
         filename[i]='.';
-    
+
         strcpy(buffer,filename);
         printf("\n%s\n",buffer);
         filename[i]=0;
