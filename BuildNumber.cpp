@@ -48,12 +48,9 @@ int main(int argc, char* argv[])
 
     if (fp.is_open())
     {
-    	printf("\ns ");
        while(!fp.eof())
         {
-        	printf("\n%i ",cp++);
             fp.getline(buffer,1000);
-            printf("%s",buffer);
         	pstr= strstr(buffer,"#define BUILDNUMBER");
             if(pstr){
             	posc= (char*)(pstr + strlen("#define BUILDNUMBER") + 1);
@@ -63,7 +60,6 @@ int main(int argc, char* argv[])
         	}
             fo.write(buffer,strlen(buffer));
             fo.put('\n');
-			printf("\n5 ");
         }
 
         fo.close();
@@ -73,14 +69,12 @@ int main(int argc, char* argv[])
         	if(filename[i]=='.')break;
         }
         filename[i]=0;
-        strcpy(buffer,"DEL ");
+        strcpy(buffer,"rm ");
         strcat(buffer,filename);
-        printf("\n%s\n",buffer);
         system(buffer);                   // borrar el original
         filename[i]='.';
 
         strcpy(buffer,filename);
-        printf("\n%s\n",buffer);
         filename[i]=0;
         rename(buffer,filename);				// cambia nombre
 
@@ -89,5 +83,5 @@ int main(int argc, char* argv[])
     {
         return 0;
     }
-    return -3;
+    return 0;
 }
